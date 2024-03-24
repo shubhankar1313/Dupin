@@ -1,6 +1,6 @@
 import pyfiglet
 import sys
-from main2 import select_folder, sorter
+from main import select_folder, sorter
 
 # MAIN
 
