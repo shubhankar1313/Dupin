@@ -49,6 +49,8 @@ def get_folder():
 
     print("\nEnter Path of Folder to Sort: ", end = "")
     folder = select_folder()
+    print()
+    
     if folder != -1:
         start_sorting(folder)
     else:
@@ -59,7 +61,8 @@ def start_sorting(folder):
 
     global invalid
 
-    task = sorter(folder)
+    task = sorter(folder, 1)
+
     if task == 1:
         invalid = 3
         main()
