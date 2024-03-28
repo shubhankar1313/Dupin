@@ -14,7 +14,7 @@ def select_folder():
     else:
         return -1
 
-def sorter(folder):
+def sorter(folder, terminal_load):
 
     dir_list = os.listdir(folder)
     dir_list_update = list()
@@ -24,7 +24,19 @@ def sorter(folder):
             dir_list_update.append(entity)
 
     if len(dir_list_update) != 0:
+
+        # Terminal GUI Initialize Condition
+        if terminal_load == 1:
+            count = 0
+            pbar = "----------"
+
         for entity in dir_list_update:
+
+            # Terminal GUI Condition
+            if terminal_load == 1:
+                count += 1
+                print(f"\rSorting...|{('#'*(int(count // (len(dir_list_update)/10)))) + pbar[int(count // (len(dir_list_update)/10)):]}|{int(count // (len(dir_list_update)/100))}%", end = "")
+            
             if os.path.isfile(f"{folder}\{entity}"):
                 transfer_file(folder, entity)
             elif os.path.isdir(f"{folder}\{entity}"):
